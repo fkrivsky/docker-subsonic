@@ -1,6 +1,6 @@
-FROM alpine:3.7
+FROM alpine:3.14
 
-LABEL maintainer="gregor@zurowski.org"
+# LABEL maintainer="gregor@zurowski.org"
 
 ENV SUBSONIC_VERSION=6.1.6
 ENV SUBSONIC_BIN=/opt/subsonic
@@ -10,7 +10,7 @@ ENV SUBSONIC_HOME=/var/subsonic
 ADD https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-${SUBSONIC_VERSION}-standalone.tar.gz /tmp/subsonic.tar.gz
 
 # Install Java and audio tools
-RUN apk --update add --no-cache openjdk8-jre-base ffmpeg lame && \
+RUN apk add --no-cache openjdk8-jre-base ffmpeg lame && \
     rm -rf /var/cache/apk/*
 
 # Set up Subsonic binaries
